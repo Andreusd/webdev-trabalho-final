@@ -45,22 +45,24 @@ const Rodadas = ({ cor }) => {
 
   return (
     <>
-      <Menu
-        cor={cor}
-        nome="TEMPORADA"
-        valores={temporadas}
-        escolhido={temporada}
-        handleChange={handleTemporadaChange}
-      />
-      <Menu
-        cor={cor}
-        nome="RODADA"
-        valores={rodadas}
-        escolhido={rodada}
-        handleChange={handleRodadaChange}
-      />
+      <div style={{ textAlign: "center" }}>
+        <Menu
+          cor={cor}
+          nome="TEMPORADA"
+          valores={temporadas}
+          escolhido={temporada}
+          handleChange={handleTemporadaChange}
+        />
+        <Menu
+          cor={cor}
+          nome="RODADA"
+          valores={rodadas}
+          escolhido={rodada}
+          handleChange={handleRodadaChange}
+        />
 
-      <PartidaInsercao onInsercao={handlePartidaInsertion} />
+        <PartidaInsercao onInsercao={handlePartidaInsertion} />
+      </div>
 
       <Container>
         <Box sx={{ marginLeft: 3 }}></Box>
