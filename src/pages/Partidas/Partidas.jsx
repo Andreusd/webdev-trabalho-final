@@ -25,6 +25,7 @@ const Rodadas = ({ cor }) => {
     setRodada(e.target.value);
     handleCombinationChange(e.target.value, temporada);
   };
+
   const handleCombinationChange = async (rodada, temporada) => {
     const partidas =
       rodada && temporada && (await getPartidas(rodada, temporada));
@@ -36,6 +37,10 @@ const Rodadas = ({ cor }) => {
       temp.push([partidas.data[i], partidas.data[i + 1]]);
     }
     setListaPartidas(temp);
+  };
+
+  const handlePartidaInsertion = () => {
+    handleCombinationChange(rodada, temporada);
   };
 
   return (
@@ -55,14 +60,14 @@ const Rodadas = ({ cor }) => {
         handleChange={handleRodadaChange}
       />
 
-      <PartidaInsercao/>
+      <PartidaInsercao onInsercao={handlePartidaInsertion} />
 
       <Container>
         <Box sx={{ marginLeft: 3 }}></Box>
         <Grid container spacing={5} columns={2}>
           {listaPartidas &&
             listaPartidas.map((partida, i) => (
-              <Grid item key={partida[0].clube+partida[1].clube+i}>
+              <Grid item key={partida[0].clube + partida[1].clube + i}>
                 <CardPartida
                   cor={cores[i % cores.length]}
                   timeA={partida[0].clube}

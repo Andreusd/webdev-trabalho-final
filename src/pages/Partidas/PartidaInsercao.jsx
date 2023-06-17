@@ -7,11 +7,12 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { postPartida } from "../../api/brasileiraoapi";
 
-export default function PartidaInsercao() {
+export default function PartidaInsercao({ onInsercao }) {
   const inserePartida = async (payload) => {
     console.log(payload);
     await postPartida(payload);
     setShowModal(false);
+    onInsercao();
   };
 
   const InsercaoModal = () => {
@@ -90,7 +91,7 @@ export default function PartidaInsercao() {
                 tecnicoMandante: "Juca",
                 tecnicoVisitante: "Juca",
                 formacaoMandante: "1-1-1-1",
-                formacaoVisitante: "1-1-1-1"
+                formacaoVisitante: "1-1-1-1",
               })
             }
           >
